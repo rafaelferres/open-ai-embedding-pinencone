@@ -7,6 +7,7 @@ const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
  * @param {*} output documentos
  */
 const savePinecone = async (output) => {
+  console.time("---> Gerando embeddings e salvando no pinecone");
   // Instancia o client do pinecone
   const client = new Pinecone();
 
@@ -20,6 +21,7 @@ const savePinecone = async (output) => {
   await PineconeStore.fromDocuments(output, embeddings, {
     pineconeIndex,
   });
+  console.timeEnd("---> Gerando embeddings e salvando no pinecone");
 };
 
 exports.savePinecone = savePinecone;

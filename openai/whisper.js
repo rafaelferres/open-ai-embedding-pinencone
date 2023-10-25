@@ -8,6 +8,7 @@ const { RecursiveCharacterTextSplitter } = require("langchain/text_splitter");
  */
 const generateDocuments = async (filePath) => {
   //Gera o text splitter
+  console.time("---> Convertendo o audio para texto");
   const splitter = new RecursiveCharacterTextSplitter({
     chunkSize: 600,
     chunkOverlap: 60,
@@ -18,7 +19,7 @@ const generateDocuments = async (filePath) => {
 
   // Gera o transcribe já splitado
   const docs = await loader.loadAndSplit(splitter);
-
+  console.timeEnd("---> Convertendo o audio para texto");
   return docs;
 };
 
