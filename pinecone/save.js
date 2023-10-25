@@ -2,13 +2,12 @@ const { Pinecone } = require("@pinecone-database/pinecone");
 const { PineconeStore } = require("langchain/vectorstores/pinecone");
 const { OpenAIEmbeddings } = require("langchain/embeddings/openai");
 
+/**
+ * Salva os documentos no pinecone
+ * @param {*} output documentos
+ */
 const savePinecone = async (output) => {
   const client = new Pinecone();
-  console.log({
-    apiKey: process.env.PINECONE_API_KEY,
-    environment: process.env.PINECONE_ENVIRONMENT,
-    index: process.env.PINECONE_INDEX,
-  });
 
   const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
 

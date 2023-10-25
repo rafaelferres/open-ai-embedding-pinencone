@@ -5,7 +5,7 @@ const { callChain } = require("./openai/chain.js");
 
 dotenv.config();
 (async () => {
-  const documents = await generateDocuments("./test.mp3");
-  await savePinecone(documents);
+  //const documents = await generateDocuments("./test.mp3");
+  //await savePinecone(documents);
   console.log((await callChain("O que são números quanticos?")).text);
 })();
